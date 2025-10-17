@@ -24,7 +24,7 @@ const Header = () => {
           </div>
           <div className={styles.brand__text}>
             <h1 className={styles.brand__title}>Info Open Library</h1>
-            <p className={styles.brand__subtitle}>Partagez, apprenez, progressez.</p>
+            <p className={styles.brand__subtitle}>Bibliothèque collaborative</p>
           </div>
         </div>
 
