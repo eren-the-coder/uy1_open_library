@@ -1,0 +1,14 @@
+/* components/Main.module.css */
+.main {
+  padding: 2rem;
+  display: flex;
+  flex: 1;
+  gap: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .main {
+    flex-direction: column;
+  }
+}

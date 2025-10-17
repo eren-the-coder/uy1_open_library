@@ -1,0 +1,15 @@
+/* components/Aside.module.css */
+.aside {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 350px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .aside {
+    max-width: 100%;
+  }
+}
