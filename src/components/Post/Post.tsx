@@ -1,4 +1,6 @@
 import styles from './Post.module.css';
+import { FaDownload } from 'react-icons/fa';
+import { HiMiniCalendarDateRange } from 'react-icons/hi2';
 
 interface PostProps {
   title: string;
@@ -39,11 +41,21 @@ const Post = ({ title, description, date, type, hasPreview, hasDownload }: PostP
         <p className={styles.description}>{description}</p>
         <div className={styles.metadatas}>
           <div className="bubbles">
-            <span className={`${styles.bubble} ${styles.bubbleDate}`}>{date}</span>
+            <span className={`${styles.bubble} ${styles.bubbleDate}`}>
+              <HiMiniCalendarDateRange size={24} color="#1d4ed8"
+                style={{
+                  marginRight: "5px",
+                }}
+              />
+              {date}
+            </span>
           </div>
           {hasDownload && (
             <div className={styles.actions}>
               <button className={`btn ${styles.downloadBtn}`} onClick={handleDownload}>
+                <FaDownload size={15} color="#fff" style={{
+                  marginRight: "5px",
+                }} />
                 Télécharger
               </button>
             </div>

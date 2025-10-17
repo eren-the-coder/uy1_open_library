@@ -1,4 +1,5 @@
 import styles from './TeachingUnits.module.css';
+import { BsArrowRightShort } from 'react-icons/bs';
 
 const TeachingUnits = () => {
   const units = [
@@ -23,7 +24,8 @@ const TeachingUnits = () => {
             className={styles.unitRow}
             onClick={() => handleUnitClick(unit)}
           >
-            {unit}
+            <div><span className={styles.dot}>•</span>{unit}</div>
+            <BsArrowRightShort size={25} color='#6366f1' />
           </div>
         ))}
       </div>
