@@ -46,45 +46,19 @@ body {
   width: 100%;
 }
 
-/* Styles globaux pour les boutons et bulles */
 .btn {
-  padding: 0.75rem 1.5rem;
+  padding: 5px 10px;
   cursor: pointer;
   border: none;
-  border-radius: var(--radius);
+  border-radius: 10px;
   font-weight: 500;
   transition: var(--transition);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
   font-size: 0.95rem;
 }
 
-.bubble {
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-}
-
-.bubble--date {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--primary-dark);
-}
-
-.bubble--doctype {
-  background: rgba(16, 185, 129, 0.1);
-  color: var(--success);
-}
-
-.bubbles {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
 
 /* Accessibilité */
 @media (prefers-reduced-motion: reduce) {
