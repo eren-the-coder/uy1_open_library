@@ -1,4 +1,4 @@
-import Post from '../Post/Post';
+import Post from '../../components/Post/Post';
 import styles from './Feed.module.css';
 
 const Feed = () => {
