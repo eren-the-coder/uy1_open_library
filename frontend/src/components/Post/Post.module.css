@@ -133,3 +133,11 @@
 .typeDefault {
   background: linear-gradient(135deg, #a8c0ff 0%, #3f2b96 100%);
 }
+
+.typeSujetExamen {
+  background: linear-gradient(135deg, #ff9966 0%, #ff5e62 100%);
+}
+
+.typeCommuniqueDoc {
+  background: linear-gradient(135deg, #56ccf2 0%, #2f80ed 100%);
+}
