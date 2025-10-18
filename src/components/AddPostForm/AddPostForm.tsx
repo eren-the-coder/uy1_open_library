@@ -64,7 +64,8 @@ const AddPostForm = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
+    console.log("here here !!!!");
+    
     // Vérification personnalisée selon le type
     if (
       formData.type !== "comm_text" &&
@@ -110,7 +111,7 @@ const AddPostForm = () => {
             <option value="comm_doc">Communiqué par document (PDF)</option>
           </select>
         </div>
-        
+
         {/* Nom du document */}
         <div className={styles.formGroup}>
           <label className={styles.label} htmlFor="doc-name">
@@ -161,7 +162,6 @@ const AddPostForm = () => {
                 id="doc-file"
                 style={{ display: "none" }}
                 onChange={handleFileChange}
-                required={showFileField}
               />
             </div>
           </div>
