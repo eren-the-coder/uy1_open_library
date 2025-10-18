@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./Header.module.css";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -31,9 +31,24 @@ const Header = () => {
 
         {/* ==== NAVIGATION ==== */}
         <nav className={`${styles.nav} ${menuOpen ? styles.active : ""}`}>
-          <Link to="/" className={styles.nav__link}>Acceuil</Link>
-          <Link to="/about" className={styles.nav__link}>À propos</Link>
-          <Link to="/contact" className={styles.nav__link}>Contact</Link>
+          <NavLink
+            className={({ isActive }) => 
+              isActive ? `${styles.nav__link} ${styles.active}` : styles.nav__link
+            }
+            to="/"
+          >Acceuil</NavLink>
+          <NavLink
+            className={({ isActive }) => 
+              isActive ? `${styles.nav__link} ${styles.active}` : styles.nav__link
+            }
+            to="/about"
+          >À propos</NavLink>
+          <NavLink
+            className={({ isActive }) => 
+              isActive ? `${styles.nav__link} ${styles.active}` : styles.nav__link
+            }
+            to="/contact"
+          >Contact</NavLink>
           <Link
             to="/contribute"
             onClick={handleContribute}

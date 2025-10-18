@@ -71,6 +71,10 @@
   transition: color 0.2s ease;
 }
 
+.active {
+  color: var(--primary);
+}
+
 .nav__link::after {
   content: "";
   position: absolute;
