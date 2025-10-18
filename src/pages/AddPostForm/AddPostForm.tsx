@@ -6,6 +6,7 @@ interface FormData {
   description: string;
   type: string;
   file: File | null;
+  teachingUnit: string;
 }
 
 const AddPostForm = () => {
@@ -14,8 +15,20 @@ const AddPostForm = () => {
     description: "",
     type: "",
     file: null,
+    teachingUnit: "",
   });
   const [fileName, setFileName] = useState("");
+
+
+  const teachingUnits = [
+    { code: "INF111", name: "Algorithmique" },
+    { code: "INF131", name: "Programmation C" },
+    { code: "INF141", name: "Architecture des ordinateurs" },
+    { code: "INF151", name: "Bases de données" },
+    { code: "MAT121", name: "Mathématiques discrètes" },
+    { code: "PHY161", name: "Électronique" },
+  ];
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -58,15 +71,24 @@ const AddPostForm = () => {
   };
 
   const handleReset = () => {
-    setFormData({ name: "", description: "", type: "", file: null });
+    setFormData({
+      name: "",
+      description: "",
+      type: "",
+      file: null,
+      teachingUnit: "",
+    });
     setFileName("");
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("here here !!!!");
+
+    if (!formData.teachingUnit) {
+      alert("Veuillez sélectionner une unité d’enseignement.");
+      return;
+    }
     
-    // Vérification personnalisée selon le type
     if (
       formData.type !== "comm_text" &&
       (!formData.file || fileName.trim() === "")
@@ -109,6 +131,28 @@ const AddPostForm = () => {
             <option value="exam">Sujet d'examen</option>
             <option value="comm_text">Communiqué textuel</option>
             <option value="comm_doc">Communiqué par document (PDF)</option>
+          </select>
+        </div>
+
+        {/* Unité d'enseignement */}
+        <div className={styles.formGroup}>
+          <label className={styles.label} htmlFor="teaching-unit">
+            Unité d’enseignement
+          </label>
+          <select
+            className={styles.input}
+            id="teaching-unit"
+            name="teachingUnit"
+            value={formData.teachingUnit}
+            onChange={handleInputChange}
+            required
+          >
+            <option value="">Sélectionnez une UE</option>
+            {teachingUnits.map((ue) => (
+              <option key={ue.code} value={ue.code}>
+                {ue.code} — {ue.name}
+              </option>
+            ))}
           </select>
         </div>
 
