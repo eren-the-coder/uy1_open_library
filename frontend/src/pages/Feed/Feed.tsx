@@ -1,43 +1,60 @@
 import Post from '../../components/Post/Post';
 import styles from './Feed.module.css';
+import { useState, useEffect } from 'react';
+
+interface Resource {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+  teachingUnit: string;
+  authorId: string | null;
+  file: string | null;
+  createdAt: string;
+  updatedAt: string;
+  validated: number;
+  views: number;
+  downloads: number;
+}
 
 const Feed = () => {
-  const posts = [
-    {
-      id: 1,
-      title: "Titre du communiqué",
-      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam molestiae excepturi consequatur sit praesentium veritatis earum quasi laboriosam deserunt, nemo expedita atque doloremque. Aliquid, magni eveniet sint voluptatem fuga dolor.",
-      date: "25/10/25",
-      type: "Communiqué",
-      hasPreview: false,
-      hasDownload: false
-    },
-    {
-      id: 2,
-      title: "Introduction à l'algorithmique",
-      description: "Cours complet sur les bases de l'algorithmique avec exemples et exercices pratiques pour les débutants en programmation.",
-      date: "20/10/25",
-      type: "Cours",
-      hasPreview: true,
-      hasDownload: true
-    },
-    {
-      id: 3,
-      title: "Structures de données avancées",
-      description: "Guide approfondi sur les structures de données complexes avec implémentations en Python et analyses de complexité.",
-      date: "15/10/25",
-      type: "TD",
-      hasPreview: true,
-      hasDownload: true
-    }
-  ];
+  const [resources, setResources] = useState<Resource[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Remplacer l'URL si ton serveur PHP est sur un autre port ou domaine
+    fetch("http://127.0.0.1:8000/api/getPosts.php")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          setResources(data.data);
+        } else {
+          console.error("Erreur backend :", data.error);
+        }
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Erreur fetch :", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Chargement...</p>;
 
   return (
     <section className={styles.feed}>
       <h1 className={styles.title}>Derniers posts</h1>
       <div className={styles.postsContainer}>
-        {posts.map(post => (
-          <Post key={post.id} {...post} />
+      {resources.length === 0 && <p>Aucune ressource pour l’instant.</p>}
+        {resources.map(post => (
+          <Post key={post.id}
+            title={post.name}
+            description={post.description}
+            date={post.updatedAt}
+            type= {post.type}
+            hasDownload={post.type !== "comm_text"}
+            hasPreview={post.type !== "comm_text"}
+          />
         ))}
       </div>
     </section>
