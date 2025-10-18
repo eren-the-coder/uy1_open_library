@@ -3,6 +3,7 @@ import { BsArrowRightShort } from 'react-icons/bs';
 
 const TeachingUnits = () => {
   const units = [
+    "Tous",
     "Inf111 - Algorithmique",
     "Inf121 - Programmation",
     "Math131 - Mathématiques discrètes",
