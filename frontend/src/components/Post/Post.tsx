@@ -18,13 +18,27 @@ const Post = ({ title, description, date, type, hasPreview, hasDownload }: PostP
 
   const getTypeColor = (type: string) => {
     const colors: any = {
-      'Communiqué': styles.typeCommunique,
-      'Cours': styles.typeCours,
-      'TD': styles.typeTD,
-      'TP': styles.typeTP
+      'comm_text': styles.typeCommunique,
+      'comm_doc': styles.typeCommuniqueDoc,
+      'exam': styles.typeSujetExamen,
+      'cours': styles.typeCours,
+      'td': styles.typeTD,
+      'tp': styles.typeTP,
     };
     return colors[type] || styles.typeDefault;
   };
+
+  const getTypeName = (type: string) => {
+    const names: any = {
+      'comm_text': 'Communiqué',
+      'comm_doc': 'Communiqué',
+      'exam': 'Sujet d\'examen',
+      'cours': 'Cours',
+      'td': 'TD',
+      'tp': 'TP',
+    };
+    return names[type];
+  }
 
   return (
     <article className={styles.post}>
@@ -33,7 +47,7 @@ const Post = ({ title, description, date, type, hasPreview, hasDownload }: PostP
       )}
       <div className={styles.typeBadge}>
         <span className={`${styles.type} ${getTypeColor(type)}`}>
-          {type}
+          {getTypeName(type)}
         </span>
       </div>
       <div className={styles.content}>
